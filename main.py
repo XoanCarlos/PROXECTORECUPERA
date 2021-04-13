@@ -13,17 +13,12 @@ class Main(QtWidgets.QMainWindow):
         Conexión a la base de datos.
         '''
         conexion.Conexion.db_connect(self)
-        conexion.Conexion.mostrarFurgo(self)
 
         '''
         llamadas a los eventos de los botones
         '''
         var.ui.btnGrabar.clicked.connect(eventos.Eventos.cargaFurgo)
         var.ui.txtMatricula.editingFinished.connect(eventos.Eventos.matCapital)
-        var.ui.tabFurgo.clicked.connect(conexion.Conexion.datosUnaFurgo)
-        var.ui.tabFurgo.setSelectionBehavior(QtWidgets.QTableWidget.SelectRows)
-
-
 
 
 # Press the green button in the gutter to run the script.
