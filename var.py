@@ -7,3 +7,4 @@ global ui
 otras variables
 '''
 newfurgo = []
+newcon = []

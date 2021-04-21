@@ -19,7 +19,6 @@ class Conexion():
 
             print('Conexion Establecida')
 
-
     '''
     Funciones xestión furgonetas
     '''
@@ -37,7 +36,7 @@ class Conexion():
             QtWidgets.QMessageBox.warning(None, query.lastError().text(),
                                           'Haga Click para Continuar')
 
-    def mostrarFurgo(self):
+    def listarFurgo(self):
         index = 0
         query = QtSql.QSqlQuery()
         query.prepare('select matricula, marca, modelo from furgoneta')
@@ -52,4 +51,45 @@ class Conexion():
             QtWidgets.QMessageBox.warning(None, query.lastError().text(),
                                           'Haga Click para Continuar')
 
+    def deleteFurgo(matricula):
+        query = QtSql.QSqlQuery()
+        query.prepare('delete from furgoneta where matricula = :matricula')
+        query.bindValue(':matricula', str(matricula))
+        if query.exec_():
+            QtWidgets.QMessageBox.information(None, 'Furgoneta Eliminada',
+                                              'Haga Click para Continuar')
+        else:
+            QtWidgets.QMessageBox.warning(None, query.lastError().text(),
+                                          'Haga Click para Continuar')
 
+    def modifFurgo(furgomodif):
+        query = QtSql.QSqlQuery()
+        print(furgomodif)
+        query.prepare('update furgoneta set marca=:marca, modelo=:modelo'
+                      ' where matricula=:matricula')
+        query.bindValue(':marca',str(furgomodif[1]))
+        query.bindValue(':modelo', str(furgomodif[2]))
+        query.bindValue(':matricula', str(furgomodif[0]))
+        if query.exec_():
+            QtWidgets.QMessageBox.information(None, 'Furgoneta Modificada',
+                                              'Haga Click para Continuar')
+        else:
+            QtWidgets.QMessageBox.warning(None, query.lastError().text(),
+                                          'Recuerde que no puede modificar la matrícula. Haga Click para Continuar')
+
+
+    '''
+    Gestión conductores
+    '''
+    def nuevoCon(newcon):
+        query = QtSql.QSqlQuery()
+        query.prepare('insert into conductor (dni, nombre) '
+                      'VALUES (:dni, :nombre)')
+        query.bindValue(':dni',str(newcon[0]))
+        query.bindValue(':nombre', str(newcon[1]))
+        if query.exec_():
+            QtWidgets.QMessageBox.information(None, 'Alta Conductor Correcta',
+                                          'Haga Click para Continuar')
+        else:
+            QtWidgets.QMessageBox.warning(None, query.lastError().text(),
+                                          'Haga Click para Continuar')
