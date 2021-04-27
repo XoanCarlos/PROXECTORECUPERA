@@ -54,7 +54,7 @@
          </size>
         </property>
         <property name="currentIndex">
-         <number>2</number>
+         <number>0</number>
         </property>
         <widget class="QWidget" name="furgonetas">
          <attribute name="title">
@@ -466,7 +466,7 @@
            </property>
           </column>
          </widget>
-         <widget class="QWidget" name="">
+         <widget class="QWidget" name="layoutWidget">
           <property name="geometry">
            <rect>
             <x>190</x>
@@ -589,6 +589,35 @@
             </spacer>
            </item>
           </layout>
+         </widget>
+         <widget class="QPushButton" name="btnReloadcon">
+          <property name="geometry">
+           <rect>
+            <x>670</x>
+            <y>80</y>
+            <width>32</width>
+            <height>32</height>
+           </rect>
+          </property>
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="autoFillBackground">
+           <bool>false</bool>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="icon">
+           <iconset>
+            <normaloff>img/Reload.png</normaloff>img/Reload.png</iconset>
+          </property>
+          <property name="autoExclusive">
+           <bool>false</bool>
+          </property>
          </widget>
         </widget>
        </widget>

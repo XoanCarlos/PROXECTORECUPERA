@@ -88,8 +88,46 @@ class Conexion():
         query.bindValue(':dni',str(newcon[0]))
         query.bindValue(':nombre', str(newcon[1]))
         if query.exec_():
-            QtWidgets.QMessageBox.information(None, 'Alta Conductor Correcta',
+            QtWidgets.QMessageBox.information(None, 'Alta Conductor?',
                                           'Haga Click para Continuar')
         else:
             QtWidgets.QMessageBox.warning(None, query.lastError().text(),
                                           'Haga Click para Continuar')
+
+    def listarCon(self):
+        index = 0
+        query = QtSql.QSqlQuery()
+        query.prepare('select dni, nombre from conductor')
+        if query.exec_():
+            while query.next():
+                var.ui.tabConductor.setRowCount(index+1) #creo la fila
+                var.ui.tabConductor.setItem(index, 0, QtWidgets.QTableWidgetItem(query.value(0)))
+                var.ui.tabConductor.setItem(index, 1, QtWidgets.QTableWidgetItem(query.value(1)))
+                index += 1
+        else:
+            QtWidgets.QMessageBox.warning(None, query.lastError().text(),
+                                          'Haga Click para Continuar')
+
+    def deleteCon(dni):
+        query = QtSql.QSqlQuery()
+        query.prepare('delete from conductor where dni = :dni')
+        query.bindValue(':dni', str(dni))
+        if query.exec_():
+            QtWidgets.QMessageBox.information(None, 'Conductor Eliminado',
+                                              'Haga Click para Continuar')
+        else:
+            QtWidgets.QMessageBox.warning(None, query.lastError().text(),
+                                          'Haga Click para Continuar')
+
+    def modifCon(conmodif):
+        query = QtSql.QSqlQuery()
+        query.prepare('update conductor set nombre=:nombre '
+                      ' where dni=:dni')
+        query.bindValue(':nombre', str(conmodif[1]))
+        query.bindValue(':dni', str(conmodif[0]))
+        if query.exec_():
+            QtWidgets.QMessageBox.information(None, 'Conductor Modificada',
+                                              'Haga Click para Continuar')
+        else:
+            QtWidgets.QMessageBox.warning(None, query.lastError().text(),
+                                          'Recuerde que no puede modificar la matrícula. Haga Click para Continuar')

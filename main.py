@@ -14,22 +14,32 @@ class Main(QtWidgets.QMainWindow):
         '''
         conexion.Conexion.db_connect(self)
         conexion.Conexion.listarFurgo(self)
+        conexion.Conexion.listarCon(self)
 
         '''
         llamadas a los eventos de los botones
         '''
-        var.ui.btnGrabar.clicked.connect(eventos.Eventos.cargaFurgo)
+
         var.ui.txtMatricula.editingFinished.connect(eventos.Eventos.matCapital)
+        var.ui.txtDni.editingFinished.connect(eventos.Eventos.dniCapital)
+        var.ui.txtNombre.editingFinished.connect(eventos.Eventos.nombreCapital)
+        var.ui.btnGrabar.clicked.connect(eventos.Eventos.cargaFurgo)
         var.ui.btnReload.clicked.connect(eventos.Eventos.limpiaFurgo)
         var.ui.btnEliminar.clicked.connect(eventos.Eventos.bajaFurgo)
         var.ui.btnModificar.clicked.connect(eventos.Eventos.modifFurgo)
         var.ui.btnAltacon.clicked.connect(eventos.Eventos.altaCon)
+        var.ui.btnEliminacon.clicked.connect(eventos.Eventos.bajaCon)
+        var.ui.btnModifcon.clicked.connect(eventos.Eventos.modifCon)
+        var.ui.btnReloadcon.clicked.connect(eventos.Eventos.limpiaCon)
+
 
         '''
         eventos de las tablas
         '''
         var.ui.tabFurgo.clicked.connect(eventos.Eventos.datosUnoFurgo)
         var.ui.tabFurgo.setSelectionBehavior(QtWidgets.QTableWidget.SelectRows)
+        var.ui.tabConductor.clicked.connect(eventos.Eventos.datosUnCon)
+        var.ui.tabConductor.setSelectionBehavior(QtWidgets.QTableWidget.SelectRows)
 
 
 
