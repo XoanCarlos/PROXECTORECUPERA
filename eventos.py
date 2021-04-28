@@ -1,4 +1,5 @@
 import var, conexion
+from PyQt5 import QtWidgets
 
 
 class Eventos():
@@ -74,8 +75,12 @@ class Eventos():
             con = [var.ui.txtDni, var.ui.txtNombre]
             for i in con:
                 var.newcon.append(i.text())
-            conexion.Conexion.nuevoCon(var.newcon)
-            conexion.Conexion.listarCon(self)
+            if Eventos.validoDni():
+                conexion.Conexion.nuevoCon(var.newcon)
+                conexion.Conexion.listarCon(self)
+            else:
+                QtWidgets.QMessageBox.critical(None, 'Datos No-Válidos ',
+                                                  'Compruebe DNI y nombre')
         except Exception as error:
             print('Error carga furgo: %s: ' % str(error))
 
@@ -83,12 +88,12 @@ class Eventos():
         try:
             fila = var.ui.tabConductor.selectedItems()
             con = [var.ui.txtDni, var.ui.txtNombre ]
-
             if fila:
                 fila = [dato.text() for dato in fila]
                 # cargo los datos de la tabla en una lista furgo
                 for i, dato in enumerate(con):
                     dato.setText(fila[i])
+            var.ui.lblValidar.setText('')
         except Exception as error:
             print('Error datos carga conductor: %s: ' % str(error))
 
@@ -138,3 +143,34 @@ class Eventos():
                 con[i].setText('')
         except Exception as error:
             print('Error limpia datos cond: %s: ' % str(error))
+
+    def validoDni():
+        try:
+            dni = var.ui.txtDni.text()
+            tabla = 'TRWAGMYFPDXBNJZSQVHLCKE'
+            dig_ext = 'XYZ'
+            reemp_dig_ext = {'X': '0', 'Y': '1', 'Z': '2'}
+            numeros = '0123456789'
+            dni = dni.upper()
+            if len(dni) == 9:
+                dig_control = dni[8]
+                dni = dni[:8]
+                if dni[0] in dig_ext:
+                    dni = dni.replace(dni[0], reemp_dig_ext[dni[0]])
+                return len(dni) == len([n for n in dni if n in numeros]) and tabla[int(dni) % 23] == dig_control
+
+        except Exception as error:
+            print('Error módulo validar DNI %s' % str(error))
+            return None
+
+    def validarDni():
+        try:
+            if Eventos.validoDni():
+                var.ui.lblValidar.setStyleSheet('QLabel {color:green;}')
+                var.ui.lblValidar.setText('V')
+            else:
+                var.ui.lblValidar.setStyleSheet('QLabel {color:red;}')
+                var.ui.lblValidar.setText('X')
+        except Exception as error:
+            print('Error módulo validar DNI %s' % str(error))
+            return None

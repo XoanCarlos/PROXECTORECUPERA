@@ -82,6 +82,12 @@
             <height>361</height>
            </rect>
           </property>
+          <attribute name="horizontalHeaderDefaultSectionSize">
+           <number>200</number>
+          </attribute>
+          <attribute name="verticalHeaderShowSortIndicator" stdset="0">
+           <bool>true</bool>
+          </attribute>
           <column>
            <property name="text">
             <string>Matrícula</string>
@@ -304,10 +310,10 @@
          <widget class="QPushButton" name="btnReload">
           <property name="geometry">
            <rect>
-            <x>640</x>
+            <x>630</x>
             <y>80</y>
-            <width>32</width>
-            <height>32</height>
+            <width>28</width>
+            <height>28</height>
            </rect>
           </property>
           <property name="sizePolicy">
@@ -324,7 +330,7 @@
           </property>
           <property name="icon">
            <iconset>
-            <normaloff>img/Reload.png</normaloff>img/Reload.png</iconset>
+            <normaloff>img/Reload2.png</normaloff>img/Reload2.png</iconset>
           </property>
           <property name="autoExclusive">
            <bool>false</bool>
@@ -356,7 +362,7 @@
          <widget class="QWidget" name="layoutWidget_2">
           <property name="geometry">
            <rect>
-            <x>260</x>
+            <x>220</x>
             <y>130</y>
             <width>331</width>
             <height>25</height>
@@ -469,17 +475,17 @@
          <widget class="QWidget" name="layoutWidget">
           <property name="geometry">
            <rect>
-            <x>190</x>
+            <x>150</x>
             <y>80</y>
             <width>471</width>
-            <height>31</height>
+            <height>44</height>
            </rect>
           </property>
           <layout class="QGridLayout" name="gridLayout_4">
            <property name="sizeConstraint">
             <enum>QLayout::SetNoConstraint</enum>
            </property>
-           <item row="0" column="3">
+           <item row="0" column="4">
             <widget class="QLabel" name="lblNombre">
              <property name="sizePolicy">
               <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
@@ -496,26 +502,6 @@
              </property>
              <property name="text">
               <string>Nombre:</string>
-             </property>
-            </widget>
-           </item>
-           <item row="0" column="0">
-            <widget class="QLabel" name="lblDni">
-             <property name="sizePolicy">
-              <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
-               <horstretch>0</horstretch>
-               <verstretch>0</verstretch>
-              </sizepolicy>
-             </property>
-             <property name="font">
-              <font>
-               <pointsize>10</pointsize>
-               <weight>75</weight>
-               <bold>true</bold>
-              </font>
-             </property>
-             <property name="text">
-              <string>DNI:</string>
              </property>
             </widget>
            </item>
@@ -569,20 +555,67 @@
              </property>
             </widget>
            </item>
-           <item row="0" column="4">
+           <item row="0" column="0">
+            <widget class="QLabel" name="lblDni">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="font">
+              <font>
+               <pointsize>10</pointsize>
+               <weight>75</weight>
+               <bold>true</bold>
+              </font>
+             </property>
+             <property name="text">
+              <string>DNI:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="5">
             <widget class="QLineEdit" name="txtNombre"/>
            </item>
            <item row="0" column="2">
+            <widget class="QLabel" name="lblValidar">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="minimumSize">
+              <size>
+               <width>24</width>
+               <height>24</height>
+              </size>
+             </property>
+             <property name="font">
+              <font>
+               <family>Viner Hand ITC</family>
+               <pointsize>14</pointsize>
+               <weight>50</weight>
+               <bold>false</bold>
+              </font>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="3">
             <spacer name="horizontalSpacer">
              <property name="orientation">
               <enum>Qt::Horizontal</enum>
              </property>
              <property name="sizeType">
-              <enum>QSizePolicy::Fixed</enum>
+              <enum>QSizePolicy::Minimum</enum>
              </property>
              <property name="sizeHint" stdset="0">
               <size>
-               <width>30</width>
+               <width>20</width>
                <height>20</height>
               </size>
              </property>
@@ -593,10 +626,10 @@
          <widget class="QPushButton" name="btnReloadcon">
           <property name="geometry">
            <rect>
-            <x>670</x>
-            <y>80</y>
-            <width>32</width>
-            <height>32</height>
+            <x>630</x>
+            <y>90</y>
+            <width>28</width>
+            <height>28</height>
            </rect>
           </property>
           <property name="sizePolicy">

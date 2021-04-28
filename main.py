@@ -1,4 +1,5 @@
 from ventana import *
+from PyQt5 import QtWidgets
 import sys, conexion, var, eventos
 
 class Main(QtWidgets.QMainWindow):
@@ -21,6 +22,7 @@ class Main(QtWidgets.QMainWindow):
         '''
 
         var.ui.txtMatricula.editingFinished.connect(eventos.Eventos.matCapital)
+        var.ui.txtDni.editingFinished.connect(eventos.Eventos.validarDni)
         var.ui.txtDni.editingFinished.connect(eventos.Eventos.dniCapital)
         var.ui.txtNombre.editingFinished.connect(eventos.Eventos.nombreCapital)
         var.ui.btnGrabar.clicked.connect(eventos.Eventos.cargaFurgo)
@@ -40,6 +42,8 @@ class Main(QtWidgets.QMainWindow):
         var.ui.tabFurgo.setSelectionBehavior(QtWidgets.QTableWidget.SelectRows)
         var.ui.tabConductor.clicked.connect(eventos.Eventos.datosUnCon)
         var.ui.tabConductor.setSelectionBehavior(QtWidgets.QTableWidget.SelectRows)
+        var.ui.tabFurgo.horizontalHeader().setSectionResizeMode(QtWidgets.QHeaderView.Stretch)
+        var.ui.tabConductor.horizontalHeader().setSectionResizeMode(QtWidgets.QHeaderView.Stretch)
 
 
 
