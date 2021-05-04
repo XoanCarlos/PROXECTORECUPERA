@@ -174,3 +174,14 @@ class Eventos():
         except Exception as error:
             print('Error módulo validar DNI %s' % str(error))
             return None
+
+    ''' Gestión Rutas '''
+
+    def abrirCalendar(self):
+        try:
+            var.dlgcalendar.show()
+
+        except Exception as error:
+            print('Error abrir Calendario' % str(error))
+            return None
+

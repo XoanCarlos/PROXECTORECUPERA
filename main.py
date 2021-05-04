@@ -1,6 +1,13 @@
 from ventana import *
+from calendar import *
 from PyQt5 import QtWidgets
 import sys, conexion, var, eventos
+
+class DialogCalendar(QtWidgets.QDialog):
+    def __init__(self):
+        super(DialogCalendar, self).__init__()
+        var.dlgcalendar = Ui_dlgCalendar()
+        var.dlgcalendar.setupUi(self)
 
 class Main(QtWidgets.QMainWindow):
     def __init__(self):
@@ -33,6 +40,7 @@ class Main(QtWidgets.QMainWindow):
         var.ui.btnEliminacon.clicked.connect(eventos.Eventos.bajaCon)
         var.ui.btnModifcon.clicked.connect(eventos.Eventos.modifCon)
         var.ui.btnReloadcon.clicked.connect(eventos.Eventos.limpiaCon)
+        var.ui.btnCalendar.clicked.connect(eventos.Eventos.abrirCalendar)
 
 
         '''
