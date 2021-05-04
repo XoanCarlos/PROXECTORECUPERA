@@ -131,3 +131,14 @@ class Conexion():
         else:
             QtWidgets.QMessageBox.warning(None, query.lastError().text(),
                                           'Recuerde que no puede modificar la matrícula. Haga Click para Continuar')
+
+
+    def cargarCmb(cmbMat):
+        cmbMat.clear()
+        cmbMat.addItem('')
+        query = QtSql.QSqlQuery()
+        query.prepare('select matricula from furgoneta')
+        if query.exec_():
+            while query.next():
+                cmbMat.addItem(str(query.value(0)))
+

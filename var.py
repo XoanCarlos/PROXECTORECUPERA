@@ -1,6 +1,8 @@
 from PyQt5 import QtWidgets
 
 global ui
+global dlgcalendar
+
 
 
 '''

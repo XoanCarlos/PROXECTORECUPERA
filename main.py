@@ -1,6 +1,14 @@
 from ventana import *
+from calendar import *
 from PyQt5 import QtWidgets
-import sys, conexion, var, eventos
+import sys, conexion, var, eventos, rutas
+
+class DialogCalendar(QtWidgets.QDialog):
+    def __init__(self):
+        super(DialogCalendar, self).__init__()
+        var.dlgcalendar = Ui_dlgCalendar()
+        var.dlgcalendar.setupUi(self)
+
 
 class Main(QtWidgets.QMainWindow):
     def __init__(self):
@@ -10,12 +18,19 @@ class Main(QtWidgets.QMainWindow):
         super(Main,self).__init__()
         var.ui = Ui_MainWindow()
         var.ui.setupUi(self)
+
+
+        ''' Instanciar ventanas auxiliares'''
+
+        var.dlgcalendar = DialogCalendar()
+
         '''
         Conexión a la base de datos.
         '''
         conexion.Conexion.db_connect(self)
         conexion.Conexion.listarFurgo(self)
         conexion.Conexion.listarCon(self)
+        conexion.Conexion.cargarCmb(var.ui.cmbMat)
 
         '''
         llamadas a los eventos de los botones
@@ -33,6 +48,7 @@ class Main(QtWidgets.QMainWindow):
         var.ui.btnEliminacon.clicked.connect(eventos.Eventos.bajaCon)
         var.ui.btnModifcon.clicked.connect(eventos.Eventos.modifCon)
         var.ui.btnReloadcon.clicked.connect(eventos.Eventos.limpiaCon)
+        var.ui.btnCalendar.clicked.connect(eventos.Eventos.abrirCalendar)
 
 
         '''
@@ -45,6 +61,9 @@ class Main(QtWidgets.QMainWindow):
         var.ui.tabFurgo.horizontalHeader().setSectionResizeMode(QtWidgets.QHeaderView.Stretch)
         var.ui.tabConductor.horizontalHeader().setSectionResizeMode(QtWidgets.QHeaderView.Stretch)
 
+        '''
+        Llenado de los combos
+        '''
 
 
 # Press the green button in the gutter to run the script.

@@ -1,5 +1,6 @@
 import var, conexion
 from PyQt5 import QtWidgets
+from calendar import *
 
 
 class Eventos():
@@ -26,6 +27,7 @@ class Eventos():
             conexion.Conexion.listarFurgo(self)
         except Exception as error:
             print('Error carga furgo: %s: ' % str(error))
+
     def bajaFurgo(self):
         try:
             matricula = var.ui.txtMatricula.text()
@@ -46,7 +48,6 @@ class Eventos():
 
         except Exception as error:
             print('Error modificar furgo: %s: ' % str(error))
-
 
     def datosUnoFurgo(self):
         try:
@@ -174,3 +175,15 @@ class Eventos():
         except Exception as error:
             print('Error módulo validar DNI %s' % str(error))
             return None
+
+    ''' Gestión Rutas '''
+
+    def abrirCalendar(self):
+        try:
+            var.dlgcalendar.show()
+
+
+        except Exception as error:
+            print('Error abrir Calendario %s' % str(error))
+            return None
+
