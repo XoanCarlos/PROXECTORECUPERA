@@ -10,6 +10,12 @@ class DialogCalendar(QtWidgets.QDialog):
         var.dlgcalendar.setupUi(self)
 
 
+class DialogCalendar(QtWidgets.QDialog):
+    def __init__(self):
+        super(DialogCalendar, self).__init__()
+        var.dlgcalendar = Ui_dlgCalendar()
+        var.dlgcalendar.setupUi(self)
+
 class Main(QtWidgets.QMainWindow):
     def __init__(self):
         '''
