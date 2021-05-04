@@ -26,6 +26,7 @@ class Main(QtWidgets.QMainWindow):
 
         '''
         Conexión a la base de datos.
+        Llenado de combos
         '''
         conexion.Conexion.db_connect(self)
         conexion.Conexion.listarFurgo(self)
@@ -61,9 +62,7 @@ class Main(QtWidgets.QMainWindow):
         var.ui.tabFurgo.horizontalHeader().setSectionResizeMode(QtWidgets.QHeaderView.Stretch)
         var.ui.tabConductor.horizontalHeader().setSectionResizeMode(QtWidgets.QHeaderView.Stretch)
 
-        '''
-        Llenado de los combos
-        '''
+
 
 
 # Press the green button in the gutter to run the script.

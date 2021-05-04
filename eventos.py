@@ -181,8 +181,6 @@ class Eventos():
     def abrirCalendar(self):
         try:
             var.dlgcalendar.show()
-
-
         except Exception as error:
             print('Error abrir Calendario %s' % str(error))
             return None
