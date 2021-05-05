@@ -215,3 +215,13 @@ class Eventos():
         except Exception as error:
             print('Error calcular distancia %s' % str(error))
             return None
+
+
+    def calculaTarifa(object):
+        try:
+            if var.ui.rbtLocal.isChecked():
+                print('local')
+            if var.ui.rbtProvincial.isChecked():
+                print('provincial')
+        except Exception as error:
+            print('Error calcular arifa %s' % str(error))

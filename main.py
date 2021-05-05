@@ -76,6 +76,11 @@ class Main(QtWidgets.QMainWindow):
         var.ui.tabFurgo.horizontalHeader().setSectionResizeMode(QtWidgets.QHeaderView.Stretch)
         var.ui.tabConductor.horizontalHeader().setSectionResizeMode(QtWidgets.QHeaderView.Stretch)
 
+        '''
+        eventos tarifas
+        '''
+
+        var.ui.btnTiporuta.buttonClicked.connect(eventos.Eventos.calculaTarifa)
 
 
 
