@@ -1,6 +1,6 @@
 import var, conexion
 from PyQt5 import QtWidgets
-from calendar import *
+from ventana import *
 
 
 class Eventos():
@@ -25,6 +25,7 @@ class Eventos():
                 var.newfurgo.append(i.text())
             conexion.Conexion.altaFurgo(var.newfurgo)
             conexion.Conexion.listarFurgo(self)
+            conexion.Conexion.cargarCmbM(var.ui.cmbMat)
         except Exception as error:
             print('Error carga furgo: %s: ' % str(error))
 
@@ -33,7 +34,7 @@ class Eventos():
             matricula = var.ui.txtMatricula.text()
             conexion.Conexion.deleteFurgo(matricula)
             conexion.Conexion.listarFurgo(self)
-
+            conexion.Conexion.cargarCmbM(var.ui.cmbMat)
         except Exception as error:
             print('Error baja furgo: %s: ' % str(error))
 
@@ -45,7 +46,7 @@ class Eventos():
                 furgomodif.append(i.text())
             conexion.Conexion.modifFurgo(furgomodif)
             conexion.Conexion.listarFurgo(self)
-
+            conexion.Conexion.cargarCmbM(var.ui.cmbMat)
         except Exception as error:
             print('Error modificar furgo: %s: ' % str(error))
 
@@ -70,6 +71,10 @@ class Eventos():
         except Exception as error:
             print('Error limpia datos furgo: %s: ' % str(error))
 
+    '''
+    Xestión de conductors
+    '''
+
     def altaCon(self):
         try:
             var.newcon = []
@@ -79,6 +84,7 @@ class Eventos():
             if Eventos.validoDni():
                 conexion.Conexion.nuevoCon(var.newcon)
                 conexion.Conexion.listarCon(self)
+                conexion.Conexion.cargarCmbC(var.ui.cmbCon)
             else:
                 QtWidgets.QMessageBox.critical(None, 'Datos No-Válidos ',
                                                   'Compruebe DNI y nombre')
@@ -103,6 +109,7 @@ class Eventos():
             dni = var.ui.txtDni.text()
             conexion.Conexion.deleteCon(dni)
             conexion.Conexion.listarCon(self)
+            conexion.Conexion.cargarCmbC(var.ui.cmbCon)
 
         except Exception as error:
             print('Error baja conductor: %s: ' % str(error))
@@ -133,6 +140,7 @@ class Eventos():
                 conmodif.append(i.text())
             conexion.Conexion.modifCon(conmodif)
             conexion.Conexion.listarCon(self)
+            conexion.Conexion.cargarCmbC(var.ui.cmbCon)
 
         except Exception as error:
             print('Error modificar furgo: %s: ' % str(error))
@@ -185,3 +193,25 @@ class Eventos():
             print('Error abrir Calendario %s' % str(error))
             return None
 
+    def cargaFecha(qDate):
+        try:
+            data = ('{0}/{1}/{2}'.format(qDate.day(), qDate.month(), qDate.year()))
+            var.ui.txtFecha.setText(str(data))
+            var.dlgcalendar.hide()
+        except Exception as error:
+            print('Error cargar Fecha %s' % str(error))
+            return None
+
+    def calculaDistancia():
+        try:
+            inicio = int(var.ui.txtKmi.text())
+            final = int(var.ui.txtKmf.text())
+            if final <= inicio:
+                var.ui.lblKmtotal.setStyleSheet('QLabel {color:red; background-color: rgb(249, 255, 188);}')
+                var.ui.lblKmtotal.setText('Distancia negativa')
+            else:
+                var.ui.lblKmtotal.setStyleSheet('QLabel {color:black; background-color: rgb(249, 255, 188);}')
+                var.ui.lblKmtotal.setText(str(final-inicio))
+        except Exception as error:
+            print('Error calcular distancia %s' % str(error))
+            return None

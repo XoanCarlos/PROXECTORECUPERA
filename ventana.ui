@@ -330,7 +330,7 @@
           </property>
           <property name="icon">
            <iconset>
-            <normaloff>img/Reload2.png</normaloff>img/Reload2.png</iconset>
+            <normaloff>../../.designer/backup/img/Reload2.png</normaloff>../../.designer/backup/img/Reload2.png</iconset>
           </property>
           <property name="autoExclusive">
            <bool>false</bool>
@@ -392,7 +392,7 @@
            <rect>
             <x>80</x>
             <y>40</y>
-            <width>353</width>
+            <width>280</width>
             <height>26</height>
            </rect>
           </property>
@@ -849,16 +849,28 @@
                <bold>true</bold>
               </font>
              </property>
+             <property name="layoutDirection">
+              <enum>Qt::LeftToRight</enum>
+             </property>
              <property name="text">
               <string>Fecha:</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
              </property>
             </widget>
            </item>
            <item row="0" column="3">
             <widget class="QLineEdit" name="txtFecha">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Ignored" vsizetype="Fixed">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
              <property name="minimumSize">
               <size>
-               <width>90</width>
+               <width>55</width>
                <height>0</height>
               </size>
              </property>
@@ -866,6 +878,12 @@
            </item>
            <item row="0" column="4">
             <widget class="QPushButton" name="btnCalendar">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
              <property name="text">
               <string/>
              </property>
@@ -966,6 +984,9 @@
                <height>0</height>
               </size>
              </property>
+             <property name="alignment">
+              <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+             </property>
             </widget>
            </item>
            <item row="0" column="2">
@@ -988,6 +1009,9 @@
                <width>120</width>
                <height>0</height>
               </size>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
              </property>
             </widget>
            </item>
@@ -1432,6 +1456,9 @@
              </property>
              <property name="text">
               <string/>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
              </property>
             </widget>
            </item>
@@ -2326,7 +2353,7 @@
           </property>
           <property name="icon">
            <iconset>
-            <normaloff>img/Reload.png</normaloff>img/Reload.png</iconset>
+            <normaloff>../../.designer/backup/img/Reload.png</normaloff>../../.designer/backup/img/Reload.png</iconset>
           </property>
           <property name="autoExclusive">
            <bool>false</bool>

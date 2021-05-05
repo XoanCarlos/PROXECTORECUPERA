@@ -1,5 +1,5 @@
 from PyQt5 import QtWidgets, QtSql
-
+from ventana import *
 import var
 
 class Conexion():
@@ -16,7 +16,6 @@ class Conexion():
 
             QtWidgets.QMessageBox.warning(None, 'Abierta Base de Datos',
                                            'Haga Click para Continuar')
-
             print('Conexion Establecida')
 
     '''
@@ -132,8 +131,16 @@ class Conexion():
             QtWidgets.QMessageBox.warning(None, query.lastError().text(),
                                           'Recuerde que no puede modificar la matrícula. Haga Click para Continuar')
 
+    def cargarCmbC(cmbCon):
+        cmbCon.clear()
+        cmbCon.addItem('')
+        query =QtSql.QSqlQuery()
+        query.prepare('select nombre from conductor')
+        if query.exec_():
+            while query.next():
+                cmbCon.addItem(str(query.value(0)))
 
-    def cargarCmb(cmbMat):
+    def cargarCmbM(cmbMat):
         cmbMat.clear()
         cmbMat.addItem('')
         query = QtSql.QSqlQuery()

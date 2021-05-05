@@ -1,13 +1,22 @@
 from ventana import *
 from calendar import *
 from PyQt5 import QtWidgets
-import sys, conexion, var, eventos, rutas
+import sys, conexion, var, eventos
+from datetime import datetime, date
+import locale
+
+locale.setlocale(locale.LC_ALL, 'es-ES')
 
 class DialogCalendar(QtWidgets.QDialog):
     def __init__(self):
         super(DialogCalendar, self).__init__()
         var.dlgcalendar = Ui_dlgCalendar()
         var.dlgcalendar.setupUi(self)
+        dia = datetime.now().day
+        mes = datetime.now().month
+        ano = datetime.now().year
+        var.dlgcalendar.Calendar.setSelectedDate((QtCore.QDate(ano, mes, dia)))
+        var.dlgcalendar.Calendar.clicked.connect(eventos.Eventos.cargaFecha)
 
 
 class Main(QtWidgets.QMainWindow):
@@ -31,16 +40,14 @@ class Main(QtWidgets.QMainWindow):
         conexion.Conexion.db_connect(self)
         conexion.Conexion.listarFurgo(self)
         conexion.Conexion.listarCon(self)
-        conexion.Conexion.cargarCmb(var.ui.cmbMat)
+        conexion.Conexion.cargarCmbM(var.ui.cmbMat)
+        conexion.Conexion.cargarCmbC(var.ui.cmbCon)
+
+
 
         '''
         llamadas a los eventos de los botones
         '''
-
-        var.ui.txtMatricula.editingFinished.connect(eventos.Eventos.matCapital)
-        var.ui.txtDni.editingFinished.connect(eventos.Eventos.validarDni)
-        var.ui.txtDni.editingFinished.connect(eventos.Eventos.dniCapital)
-        var.ui.txtNombre.editingFinished.connect(eventos.Eventos.nombreCapital)
         var.ui.btnGrabar.clicked.connect(eventos.Eventos.cargaFurgo)
         var.ui.btnReload.clicked.connect(eventos.Eventos.limpiaFurgo)
         var.ui.btnEliminar.clicked.connect(eventos.Eventos.bajaFurgo)
@@ -51,7 +58,14 @@ class Main(QtWidgets.QMainWindow):
         var.ui.btnReloadcon.clicked.connect(eventos.Eventos.limpiaCon)
         var.ui.btnCalendar.clicked.connect(eventos.Eventos.abrirCalendar)
 
-
+        '''
+        eventos cajas texto
+        '''
+        var.ui.txtMatricula.editingFinished.connect(eventos.Eventos.matCapital)
+        var.ui.txtDni.editingFinished.connect(eventos.Eventos.validarDni)
+        var.ui.txtDni.editingFinished.connect(eventos.Eventos.dniCapital)
+        var.ui.txtNombre.editingFinished.connect(eventos.Eventos.nombreCapital)
+        var.ui.txtKmf.editingFinished.connect(eventos.Eventos.calculaDistancia)
         '''
         eventos de las tablas
         '''
