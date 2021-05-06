@@ -216,7 +216,6 @@ class Eventos():
             print('Error calcular distancia %s' % str(error))
             return None
 
-
     def calculaTarifa(object):
         try:
             if var.ui.rbtLocal.isChecked():

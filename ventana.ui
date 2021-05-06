@@ -23,6 +23,9 @@
    <layout class="QHBoxLayout" name="horizontalLayout">
     <item>
      <layout class="QGridLayout" name="gridLayout">
+      <property name="sizeConstraint">
+       <enum>QLayout::SetMaximumSize</enum>
+      </property>
       <item row="0" column="0">
        <spacer name="verticalSpacer_2">
         <property name="orientation">
@@ -34,7 +37,7 @@
         <property name="sizeHint" stdset="0">
          <size>
           <width>20</width>
-          <height>38</height>
+          <height>20</height>
          </size>
         </property>
        </spacer>
@@ -392,7 +395,7 @@
            <rect>
             <x>80</x>
             <y>40</y>
-            <width>280</width>
+            <width>353</width>
             <height>26</height>
            </rect>
           </property>
@@ -849,28 +852,16 @@
                <bold>true</bold>
               </font>
              </property>
-             <property name="layoutDirection">
-              <enum>Qt::LeftToRight</enum>
-             </property>
              <property name="text">
               <string>Fecha:</string>
-             </property>
-             <property name="alignment">
-              <set>Qt::AlignCenter</set>
              </property>
             </widget>
            </item>
            <item row="0" column="3">
             <widget class="QLineEdit" name="txtFecha">
-             <property name="sizePolicy">
-              <sizepolicy hsizetype="Ignored" vsizetype="Fixed">
-               <horstretch>0</horstretch>
-               <verstretch>0</verstretch>
-              </sizepolicy>
-             </property>
              <property name="minimumSize">
               <size>
-               <width>55</width>
+               <width>90</width>
                <height>0</height>
               </size>
              </property>
@@ -878,18 +869,12 @@
            </item>
            <item row="0" column="4">
             <widget class="QPushButton" name="btnCalendar">
-             <property name="sizePolicy">
-              <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-               <horstretch>0</horstretch>
-               <verstretch>0</verstretch>
-              </sizepolicy>
-             </property>
              <property name="text">
               <string/>
              </property>
              <property name="icon">
               <iconset>
-               <normaloff>img/calendar.png</normaloff>img/calendar.png</iconset>
+               <normaloff>../../.designer/backup/img/calendar.png</normaloff>../../.designer/backup/img/calendar.png</iconset>
              </property>
             </widget>
            </item>
@@ -984,9 +969,6 @@
                <height>0</height>
               </size>
              </property>
-             <property name="alignment">
-              <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-             </property>
             </widget>
            </item>
            <item row="0" column="2">
@@ -1009,9 +991,6 @@
                <width>120</width>
                <height>0</height>
               </size>
-             </property>
-             <property name="alignment">
-              <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
              </property>
             </widget>
            </item>
@@ -1456,9 +1435,6 @@
              </property>
              <property name="text">
               <string/>
-             </property>
-             <property name="alignment">
-              <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
              </property>
             </widget>
            </item>
