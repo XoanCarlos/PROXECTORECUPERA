@@ -235,7 +235,7 @@ class Eventos():
                 if var.ui.rbtNacional.isChecked():
                     var.ui.lblPrecio.setText(str('{0:.2f}'.format(float(totalkm)* 0.06)) + ' €')
         except Exception as error:
-            print('Error calcular arifa %s' % str(error))
+            print('Error calcular tarifa %s' % str(error))
 
 
     '''

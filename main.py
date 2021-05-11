@@ -1,11 +1,10 @@
 from ventana import *
 from calendar import *
-from PyQt5 import QtWidgets
+from PyQt5 import QtWidgets, QtCore
 import sys, conexion, var, eventos
 from datetime import datetime, date
 import locale
-
-locale.setlocale(locale.LC_ALL, 'es-ES')
+locale.setlocale(locale.LC_ALL, 'esp')
 
 class DialogCalendar(QtWidgets.QDialog):
     def __init__(self):
@@ -17,6 +16,7 @@ class DialogCalendar(QtWidgets.QDialog):
         ano = datetime.now().year
         var.dlgcalendar.Calendar.setSelectedDate((QtCore.QDate(ano, mes, dia)))
         var.dlgcalendar.Calendar.clicked.connect(eventos.Eventos.cargaFecha)
+
 
 
 class Main(QtWidgets.QMainWindow):
@@ -90,7 +90,10 @@ class Main(QtWidgets.QMainWindow):
 
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-    app = QtWidgets.QApplication([])
+    app = QtWidgets.QApplication(sys.argv)
+    locale = QtCore.QLocale.system().name()
+    qtTranslator = QtCore.QTranslator()
+    app.installTranslator(qtTranslator)
     window = Main()
     window.setFixedSize(1024,768)
     window.show()
