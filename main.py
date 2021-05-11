@@ -82,6 +82,12 @@ class Main(QtWidgets.QMainWindow):
 
         var.ui.btnTiporuta.buttonClicked.connect(eventos.Eventos.calculaTarifa)
 
+        '''
+        eventos menubar
+        '''
+        var.ui.menuBarSalir.triggered.connect(eventos.Eventos.Salir)
+
+
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
     app = QtWidgets.QApplication([])

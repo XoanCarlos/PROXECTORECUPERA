@@ -1,3 +1,5 @@
+import sys
+
 import var, conexion
 from PyQt5 import QtWidgets
 from ventana import *
@@ -211,16 +213,45 @@ class Eventos():
                 var.ui.lblKmtotal.setText('Distancia negativa')
             else:
                 var.ui.lblKmtotal.setStyleSheet('QLabel {color:black; background-color: rgb(249, 255, 188);}')
-                var.ui.lblKmtotal.setText(str(final-inicio))
+                var.ui.lblKmtotal.setText(str(final-inicio) + ' km')
         except Exception as error:
             print('Error calcular distancia %s' % str(error))
             return None
 
     def calculaTarifa(object):
         try:
-            if var.ui.rbtLocal.isChecked():
-                print('local')
-            if var.ui.rbtProvincial.isChecked():
-                print('provincial')
+            totalkm = int(var.ui.txtKmf.text())-int(var.ui.txtKmi.text())
+            if totalkm <= 0:
+                var.ui.lblPrecio.setStyleSheet('QLabel {color:red; background-color: rgb(249, 255, 188);}')
+                var.ui.lblPrecio.setText('Valores km incorrectos')
+            else:
+                var.ui.lblPrecio.setStyleSheet('QLabel {color:black; background-color: rgb(249, 255, 188);}')
+                if var.ui.rbtLocal.isChecked():
+                    var.ui.lblPrecio.setText(str('{0:.2f}'.format(float(totalkm)* 0.18)) + ' €')
+                if var.ui.rbtProvincial.isChecked():
+                    var.ui.lblPrecio.setText(str('{0:.2f}'.format(float(totalkm)* 0.14)) + ' €')
+                if var.ui.rbtRegional.isChecked():
+                    var.ui.lblPrecio.setText(str('{0:.2f}'.format(float(totalkm)* 0.10)) + ' €')
+                if var.ui.rbtNacional.isChecked():
+                    var.ui.lblPrecio.setText(str('{0:.2f}'.format(float(totalkm)* 0.06)) + ' €')
         except Exception as error:
             print('Error calcular arifa %s' % str(error))
+
+
+    '''
+    eventos generales
+    '''
+
+    def Salir(self):
+        try:
+            ret = QtWidgets.QMessageBox.question(None, 'Salir',
+                                           '¿Desea Salir del Programa?')
+            if ret == QtWidgets.QMessageBox.Yes:
+                sys.exit()
+            else:
+                QtWidgets.QMessageBox.hide
+
+        except Exception as error:
+            print('Error salir menú %s' % str(error))
+
+
