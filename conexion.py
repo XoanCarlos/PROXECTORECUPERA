@@ -1,5 +1,6 @@
 from PyQt5 import QtWidgets, QtSql
 from ventana import *
+from tarifas import *
 import var
 
 class Conexion():
@@ -149,3 +150,27 @@ class Conexion():
             while query.next():
                 cmbMat.addItem(str(query.value(0)))
 
+    def cargarTarifas(self):
+        query = QtSql.QSqlQuery()
+        query.prepare('select * from tarifas')
+        if query.exec_():
+            while query.next():
+                var.tarifas[0].setText(str(query.value(0)) + ' €/km')
+                var.tarifas[1].setText(str(query.value(1)) + ' €/km')
+                var.tarifas[2].setText(str(query.value(2)) + ' €/km')
+                var.tarifas[3].setText(str(query.value(3)) + ' €/km')
+
+
+    def actualizaTarifas(self):
+        nuevatarifa = []
+        print('hola')
+        for i, dato in enumerate(var.tarifas):
+            nuevatarifa.append(dato.text())
+        print(nuevatarifa)
+        query = QtSql.QSqlQuery()
+        query.prepare('update tarifas set local=:local, provincial=:provincial, regional =:regional',
+                      ' nacional=:nacional')
+        query.bindValue(':local', '{0:.2f}'.format(float(nuevatarifa[0])))
+        query.bindValue(':provincial', '{0:.2f}'.format(float(nuevatarifa[1])))
+        query.bindValue(':regional', '{0:.2f}'.format(float(nuevatarifa[2])))
+        query.bindValue(':nacional', '{0:.2f}'.format(float(nuevatarifa[3])))

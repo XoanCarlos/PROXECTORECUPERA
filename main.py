@@ -1,7 +1,8 @@
 from ventana import *
 from calendar import *
+from tarifas import *
 from PyQt5 import QtWidgets, QtCore
-import sys, conexion, var, eventos
+import sys, conexion, var, eventos, rutas
 from datetime import datetime, date
 import locale
 locale.setlocale(locale.LC_ALL, 'esp')
@@ -17,6 +18,13 @@ class DialogCalendar(QtWidgets.QDialog):
         var.dlgcalendar.Calendar.setSelectedDate((QtCore.QDate(ano, mes, dia)))
         var.dlgcalendar.Calendar.clicked.connect(eventos.Eventos.cargaFecha)
 
+class DialogTarifas(QtWidgets.QDialog):
+    def __init__(self):
+        super(DialogTarifas, self).__init__()
+        var.dlgtarifas = Ui_dlgTarifas()
+        var.dlgtarifas.setupUi(self)
+        var.tarifas = [var.dlgtarifas.txtLoc, var.dlgtarifas.txtPro, var.dlgtarifas.txtReg,var.dlgtarifas.txtNac]
+        var.dlgtarifas.btnActualiza.clicked.connect(conexion.Conexion.actualizaTarifas)
 
 
 class Main(QtWidgets.QMainWindow):
@@ -28,10 +36,10 @@ class Main(QtWidgets.QMainWindow):
         var.ui = Ui_MainWindow()
         var.ui.setupUi(self)
 
-
         ''' Instanciar ventanas auxiliares'''
 
         var.dlgcalendar = DialogCalendar()
+        var.dlgtarifas = DialogTarifas()
 
         '''
         Conexión a la base de datos.
@@ -57,6 +65,7 @@ class Main(QtWidgets.QMainWindow):
         var.ui.btnModifcon.clicked.connect(eventos.Eventos.modifCon)
         var.ui.btnReloadcon.clicked.connect(eventos.Eventos.limpiaCon)
         var.ui.btnCalendar.clicked.connect(eventos.Eventos.abrirCalendar)
+
 
         '''
         eventos cajas texto
@@ -86,6 +95,7 @@ class Main(QtWidgets.QMainWindow):
         eventos menubar
         '''
         var.ui.menuBarSalir.triggered.connect(eventos.Eventos.Salir)
+        var.ui.menuBarTarifas.triggered.connect(rutas.Rutas.mostrarTarifas)
 
 
 # Press the green button in the gutter to run the script.
