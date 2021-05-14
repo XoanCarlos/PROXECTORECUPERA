@@ -1,6 +1,6 @@
 from PyQt5 import QtWidgets, QtSql
 from ventana import *
-from tarifas import *
+#from tarifas import *
 import var
 
 class Conexion():
@@ -155,22 +155,34 @@ class Conexion():
         query.prepare('select * from tarifas')
         if query.exec_():
             while query.next():
-                var.tarifas[0].setText(str(query.value(0)) + ' €/km')
-                var.tarifas[1].setText(str(query.value(1)) + ' €/km')
-                var.tarifas[2].setText(str(query.value(2)) + ' €/km')
-                var.tarifas[3].setText(str(query.value(3)) + ' €/km')
-
+                var.tarifas[0].setText(str(query.value(1)))
+                var.tarifas[1].setText(str(query.value(2)))
+                var.tarifas[2].setText(str(query.value(3)))
+                var.tarifas[3].setText(str(query.value(4)))
 
     def actualizaTarifas(self):
-        nuevatarifa = []
-        print('hola')
-        for i, dato in enumerate(var.tarifas):
-            nuevatarifa.append(dato.text())
-        print(nuevatarifa)
-        query = QtSql.QSqlQuery()
-        query.prepare('update tarifas set local=:local, provincial=:provincial, regional =:regional',
-                      ' nacional=:nacional')
-        query.bindValue(':local', '{0:.2f}'.format(float(nuevatarifa[0])))
-        query.bindValue(':provincial', '{0:.2f}'.format(float(nuevatarifa[1])))
-        query.bindValue(':regional', '{0:.2f}'.format(float(nuevatarifa[2])))
-        query.bindValue(':nacional', '{0:.2f}'.format(float(nuevatarifa[3])))
+        try:
+            nuevatarifa = []
+            print('hola')
+            id = 1
+            for i, dato in enumerate(var.tarifas):
+                nuevatarifa.append('{0:.2f}'.format(float(dato.text())))
+            print(nuevatarifa)
+
+            query = QtSql.QSqlQuery()
+            query.prepare('update tarifas set local=:local, provincial=:provincial, regional =:regional, '
+                          'nacional=:nacional where id =:id')
+            query.bindValue(':id', int(id))
+            query.bindValue(':local', (nuevatarifa[0]))
+            query.bindValue(':provincial', (nuevatarifa[1]))
+            query.bindValue(':regional', (nuevatarifa[2]))
+            query.bindValue(':nacional', (nuevatarifa[3]))
+            if query.exec_():
+                QtWidgets.QMessageBox.information(None, 'Tarifas modificadas',
+                                                  'Haga Click para Continuar')
+            else:
+                QtWidgets.QMessageBox.warning(None, query.lastError().text(),
+                                              'Recuerde que las tarifas son únicas. Haga Click para Continuar')
+
+        except Exception as error:
+            print('Error actualizar tarifas: %s: ' % str(error))
