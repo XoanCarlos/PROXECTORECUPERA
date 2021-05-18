@@ -310,8 +310,8 @@
          <widget class="QPushButton" name="btnReload">
           <property name="geometry">
            <rect>
-            <x>630</x>
-            <y>80</y>
+            <x>640</x>
+            <y>70</y>
             <width>32</width>
             <height>32</height>
            </rect>
@@ -2188,7 +2188,7 @@
            </property>
           </column>
          </widget>
-         <widget class="QWidget" name="">
+         <widget class="QWidget" name="layoutWidget">
           <property name="geometry">
            <rect>
             <x>150</x>
@@ -2342,6 +2342,38 @@
             </layout>
            </item>
           </layout>
+         </widget>
+         <widget class="QPushButton" name="btnReloadcon">
+          <property name="geometry">
+           <rect>
+            <x>630</x>
+            <y>100</y>
+            <width>41</width>
+            <height>23</height>
+           </rect>
+          </property>
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="autoFillBackground">
+           <bool>false</bool>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="icon">
+           <iconset>
+            <normaloff>img/Reload2.png</normaloff>img/Reload2.png</iconset>
+          </property>
+          <property name="iconSize">
+           <size>
+            <width>24</width>
+            <height>24</height>
+           </size>
+          </property>
          </widget>
         </widget>
        </widget>
