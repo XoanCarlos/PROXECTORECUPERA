@@ -1,6 +1,6 @@
 from PyQt5 import QtWidgets, QtSql
 from ventana import *
-#from tarifas import *
+from tarifas import *
 import var
 
 class Conexion():
@@ -151,24 +151,29 @@ class Conexion():
                 cmbMat.addItem(str(query.value(0)))
 
     def cargarTarifas(self):
+        tar = []
         query = QtSql.QSqlQuery()
         query.prepare('select * from tarifas')
         if query.exec_():
             while query.next():
                 var.tarifas[0].setText(str(query.value(1)))
+                tar.append(query.value(1))
                 var.tarifas[1].setText(str(query.value(2)))
+                tar.append(query.value(2))
                 var.tarifas[2].setText(str(query.value(3)))
+                tar.append(query.value(3))
                 var.tarifas[3].setText(str(query.value(4)))
+                tar.append(query.value(4))
+        return tar
 
     def actualizaTarifas(self):
         try:
             nuevatarifa = []
-            print('hola')
             id = 1
+            #CARGO LAS NUEVAS TARIFAS
             for i, dato in enumerate(var.tarifas):
                 nuevatarifa.append('{0:.2f}'.format(float(dato.text())))
-            print(nuevatarifa)
-
+            #CARGO LAS NUEVAS TARIFAS EN LA BASE DE DATOS
             query = QtSql.QSqlQuery()
             query.prepare('update tarifas set local=:local, provincial=:provincial, regional =:regional, '
                           'nacional=:nacional where id =:id')
@@ -183,6 +188,5 @@ class Conexion():
             else:
                 QtWidgets.QMessageBox.warning(None, query.lastError().text(),
                                               'Recuerde que las tarifas son únicas. Haga Click para Continuar')
-
         except Exception as error:
             print('Error actualizar tarifas: %s: ' % str(error))

@@ -218,8 +218,10 @@ class Eventos():
             print('Error calcular distancia %s' % str(error))
             return None
 
-    def calculaTarifa(object):
+    def calculaTarifa(self):
         try:
+            coste = []
+            coste = conexion.Conexion.cargarTarifas(self)
             totalkm = int(var.ui.txtKmf.text())-int(var.ui.txtKmi.text())
             if totalkm <= 0:
                 var.ui.lblPrecio.setStyleSheet('QLabel {color:red; background-color: rgb(249, 255, 188);}')
@@ -227,13 +229,13 @@ class Eventos():
             else:
                 var.ui.lblPrecio.setStyleSheet('QLabel {color:black; background-color: rgb(249, 255, 188);}')
                 if var.ui.rbtLocal.isChecked():
-                    var.ui.lblPrecio.setText(str('{0:.2f}'.format(float(totalkm)* 0.18)) + ' €')
+                    var.ui.lblPrecio.setText(str('{0:.2f}'.format(float(totalkm)*coste[0])) + ' €')
                 if var.ui.rbtProvincial.isChecked():
-                    var.ui.lblPrecio.setText(str('{0:.2f}'.format(float(totalkm)* 0.14)) + ' €')
+                    var.ui.lblPrecio.setText(str('{0:.2f}'.format(float(totalkm)*coste[1])) + ' €')
                 if var.ui.rbtRegional.isChecked():
-                    var.ui.lblPrecio.setText(str('{0:.2f}'.format(float(totalkm)* 0.10)) + ' €')
+                    var.ui.lblPrecio.setText(str('{0:.2f}'.format(float(totalkm)*coste[2])) + ' €')
                 if var.ui.rbtNacional.isChecked():
-                    var.ui.lblPrecio.setText(str('{0:.2f}'.format(float(totalkm)* 0.06)) + ' €')
+                    var.ui.lblPrecio.setText(str('{0:.2f}'.format(float(totalkm)*coste[3])) + ' €')
         except Exception as error:
             print('Error calcular tarifa %s' % str(error))
 
