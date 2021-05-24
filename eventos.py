@@ -240,6 +240,8 @@ class Eventos():
             print('Error calcular tarifa %s' % str(error))
 
 
+
+
     '''
     eventos generales
     '''

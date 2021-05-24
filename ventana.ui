@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>820</width>
+    <width>1014</width>
     <height>719</height>
    </rect>
   </property>
@@ -49,12 +49,12 @@
         </property>
         <property name="maximumSize">
          <size>
-          <width>800</width>
+          <width>850</width>
           <height>600</height>
          </size>
         </property>
         <property name="currentIndex">
-         <number>2</number>
+         <number>1</number>
         </property>
         <widget class="QWidget" name="furgonetas">
          <attribute name="title">
@@ -330,7 +330,7 @@
           </property>
           <property name="icon">
            <iconset>
-            <normaloff>img/Reload2.png</normaloff>img/Reload2.png</iconset>
+            <normaloff>../../.designer/backup/img/Reload2.png</normaloff>../../.designer/backup/img/Reload2.png</iconset>
           </property>
           <property name="autoExclusive">
            <bool>false</bool>
@@ -357,9 +357,9 @@
          <widget class="Line" name="line_3">
           <property name="geometry">
            <rect>
-            <x>20</x>
+            <x>30</x>
             <y>250</y>
-            <width>751</width>
+            <width>791</width>
             <height>21</height>
            </rect>
           </property>
@@ -382,15 +382,106 @@
            <rect>
             <x>20</x>
             <y>280</y>
-            <width>751</width>
+            <width>811</width>
             <height>281</height>
            </rect>
           </property>
+          <property name="sizeAdjustPolicy">
+           <enum>QAbstractScrollArea::AdjustToContents</enum>
+          </property>
+          <column>
+           <property name="text">
+            <string>NumRuta</string>
+           </property>
+           <property name="font">
+            <font>
+             <weight>75</weight>
+             <bold>true</bold>
+            </font>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Fecha</string>
+           </property>
+           <property name="font">
+            <font>
+             <weight>75</weight>
+             <bold>true</bold>
+            </font>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Matrícula</string>
+           </property>
+           <property name="font">
+            <font>
+             <weight>75</weight>
+             <bold>true</bold>
+            </font>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Conductor</string>
+           </property>
+           <property name="font">
+            <font>
+             <weight>75</weight>
+             <bold>true</bold>
+            </font>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>KmTotal</string>
+           </property>
+           <property name="font">
+            <font>
+             <weight>75</weight>
+             <bold>true</bold>
+            </font>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>TipoRuta</string>
+           </property>
+           <property name="font">
+            <font>
+             <weight>75</weight>
+             <bold>true</bold>
+            </font>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Tarifa</string>
+           </property>
+           <property name="font">
+            <font>
+             <weight>75</weight>
+             <bold>true</bold>
+            </font>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Total</string>
+           </property>
+           <property name="font">
+            <font>
+             <weight>75</weight>
+             <bold>true</bold>
+            </font>
+           </property>
+          </column>
          </widget>
          <widget class="QWidget" name="layoutWidget">
           <property name="geometry">
            <rect>
-            <x>80</x>
+            <x>280</x>
             <y>40</y>
             <width>286</width>
             <height>52</height>
@@ -895,7 +986,7 @@
              </property>
              <property name="icon">
               <iconset>
-               <normaloff>img/calendar.png</normaloff>img/calendar.png</iconset>
+               <normaloff>../../.designer/backup/img/calendar.png</normaloff>../../.designer/backup/img/calendar.png</iconset>
              </property>
             </widget>
            </item>
@@ -904,7 +995,7 @@
          <widget class="QWidget" name="layoutWidget">
           <property name="geometry">
            <rect>
-            <x>80</x>
+            <x>200</x>
             <y>90</y>
             <width>437</width>
             <height>22</height>
@@ -962,7 +1053,7 @@
          <widget class="QWidget" name="layoutWidget">
           <property name="geometry">
            <rect>
-            <x>80</x>
+            <x>140</x>
             <y>130</y>
             <width>563</width>
             <height>22</height>
@@ -1473,7 +1564,7 @@
          <widget class="QWidget" name="layoutWidget">
           <property name="geometry">
            <rect>
-            <x>130</x>
+            <x>170</x>
             <y>170</y>
             <width>508</width>
             <height>22</height>
@@ -2006,7 +2097,7 @@
          <widget class="QWidget" name="layoutWidget">
           <property name="geometry">
            <rect>
-            <x>200</x>
+            <x>260</x>
             <y>210</y>
             <width>311</width>
             <height>25</height>
@@ -2366,7 +2457,7 @@
           </property>
           <property name="icon">
            <iconset>
-            <normaloff>img/Reload2.png</normaloff>img/Reload2.png</iconset>
+            <normaloff>../../.designer/backup/img/Reload2.png</normaloff>../../.designer/backup/img/Reload2.png</iconset>
           </property>
           <property name="iconSize">
            <size>
@@ -2387,7 +2478,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>820</width>
+     <width>1014</width>
      <height>21</height>
     </rect>
    </property>

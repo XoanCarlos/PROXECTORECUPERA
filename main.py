@@ -75,6 +75,7 @@ class Main(QtWidgets.QMainWindow):
         var.ui.btnModifcon.clicked.connect(eventos.Eventos.modifCon)
         var.ui.btnReloadcon.clicked.connect(eventos.Eventos.limpiaCon)
         var.ui.btnCalendar.clicked.connect(eventos.Eventos.abrirCalendar)
+        var.ui.btnAltaruta.clicked.connect(rutas.Rutas.altaRuta)
 
 
         '''
