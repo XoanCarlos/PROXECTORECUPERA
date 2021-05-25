@@ -16,14 +16,14 @@ class Rutas():
             print('Error mostrar ventana tarifas: %s: ' % str(error))
 
 
-    def altaRuta(self):
+    def cargaRuta(self):
            try:
                newruta = []
                newruta.append(var.ui.txtFecha.text())
                newruta.append(var.ui.cmbMat.currentText())
                newruta.append(var.ui.cmbCon.currentText())
-               newruta.append(var.ui.txtKmi.text())
-               newruta.append(var.ui.txtKmf.text())
+               newruta.append(int(var.ui.txtKmi.text()))
+               newruta.append(int(var.ui.txtKmf.text()))
                if var.ui.rbtLocal.isChecked():
                    tarifa = conexion.Conexion.selectTarifa(0)
                elif var.ui.rbtProvincial.isChecked():
@@ -34,9 +34,14 @@ class Rutas():
                    tarifa = conexion.Conexion.selectTarifa(3)
                newruta.append(float(tarifa))
                conexion.Conexion.altaRuta(newruta)
-               print(newruta)
-
+               conexion.Conexion.cargaRutas(self)
                 #conexion.Conexion.altaRuta(newruta)
-
            except Exception as error:
-               print('Error alta Ruta en eventos %s' % str(error))
+               print('Error alta Ruta en rutas %s' % str(error))
+
+    def cargaUnaRuta(self):
+        try:
+            fila = var.ui.tabRutas.SelectedItems()
+
+        except Exception as error:
+            print('Cargar una ruta: %s: ' % str(error))

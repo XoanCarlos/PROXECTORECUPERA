@@ -206,35 +206,50 @@ class Conexion():
                         return query.value(3)
                     elif valor == 3:
                         return query.value(4)
-
         except Exception as error:
             print('Error select tarifa %s' % str(error))
 
 
     def altaRuta(newruta):
         try:
-            print(newruta)
+
+            query = QtSql.QSqlQuery()
+            query.prepare('insert into rutas (fecha, matricula, conductor, kmini, kmfin, tarifa) values (:fecha, :matricula, :conductor, :kmini, :kmfin, :tarifa)')
+            query.bindValue(':fecha', newruta[0])
+            query.bindValue(':matricula', newruta[1])
+            query.bindValue(':conductor', newruta[2])
+            query.bindValue(':kmini', newruta[3])
+            query.bindValue(':kmfin', newruta[4])
+            query.bindValue(':tarifa', newruta[5])
+
+            if query.exec_():
+                print('correcto')
+            else:
+                print('error alta ruta')
+
         except Exception as error:
             print('Error alta ruta en conexion' % str(error))
 
-    # def cargaRutas(self):
-    #     try:
-    #         index = 0
-    #         kmt = 0
-    #         total = 0.00
-    #         query = QtSql.QSqlQuery()
-    #         query.prepare('select * from rutas')
-    #         if query.exec_():
-    #             while query.next():
-    #                 var.ui.tabRutas.setRowCount(index + 1)  # creo la fila
-    #                 var.ui.tabRutas.setItem(index, 0, QtWidgets.QTableWidgetItem(query.value(0)))
-    #                 var.ui.tabRutas.setItem(index, 1, QtWidgets.QTableWidgetItem(query.value(1)))
-    #                 var.ui.tabRutas.setItem(index, 2, QtWidgets.QTableWidgetItem(query.value(2)))
-    #                 var.ui.tabRutas.setItem(index, 3, QtWidgets.QTableWidgetItem(query.value(3)))
-    #                 kmt = int(query.value(5)) - int(query.value(4))
-    #                 var.ui.tabRutas.setItem(index, 4, QtWidgets.QTableWidgetItem(str(kmt)))
-    #                 var.ui.tabRutas.setItem(index, 6, QtWidgets.QTableWidgetItem(query.value(6)))
-    #                 total = float(query.value(6)) * float(kmt)
-    #                 var.ui.tabRutas.setItem(index, 7, QtWidgets.QTableWidgetItem(str(total)))
-    #     except Exception as error:
-    #         print('Cargar rutas: %s: ' % str(error))
+    def cargaRutas(self):
+        try:
+            index = 0
+            kmt = 0
+            total = 0.00
+            query = QtSql.QSqlQuery()
+            query.prepare('select * from rutas')
+            if query.exec_():
+                while query.next():
+                    var.ui.tabRutas.setRowCount(index + 1)  # creo la fila
+                    var.ui.tabRutas.setItem(index, 0, QtWidgets.QTableWidgetItem(str(query.value(0))))
+                    var.ui.tabRutas.setItem(index, 1, QtWidgets.QTableWidgetItem(query.value(1)))
+                    var.ui.tabRutas.setItem(index, 2, QtWidgets.QTableWidgetItem(query.value(2)))
+                    var.ui.tabRutas.setItem(index, 3, QtWidgets.QTableWidgetItem(query.value(3)))
+                    kmt = int(query.value(5)) - int(query.value(4))
+                    var.ui.tabRutas.setItem(index, 4, QtWidgets.QTableWidgetItem(str(kmt)))
+                    var.ui.tabRutas.setItem(index, 5, QtWidgets.QTableWidgetItem(str(query.value(6))))
+                    total = float(query.value(6)) * float(kmt)
+                    var.ui.tabRutas.setItem(index, 6, QtWidgets.QTableWidgetItem(str(total) + ' €'))
+                    index = index + 1
+        except Exception as error:
+            print('Cargar rutas: %s: ' % str(error))
+

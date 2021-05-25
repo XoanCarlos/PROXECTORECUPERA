@@ -54,14 +54,14 @@ class Main(QtWidgets.QMainWindow):
         '''
         Conexión a la base de datos.
         Llenado de combos
+        Llenado de tablas
         '''
         conexion.Conexion.db_connect(self)
         conexion.Conexion.listarFurgo(self)
         conexion.Conexion.listarCon(self)
         conexion.Conexion.cargarCmbM(var.ui.cmbMat)
         conexion.Conexion.cargarCmbC(var.ui.cmbCon)
-
-
+        conexion.Conexion.cargaRutas(self)
 
         '''
         llamadas a los eventos de los botones
@@ -75,7 +75,7 @@ class Main(QtWidgets.QMainWindow):
         var.ui.btnModifcon.clicked.connect(eventos.Eventos.modifCon)
         var.ui.btnReloadcon.clicked.connect(eventos.Eventos.limpiaCon)
         var.ui.btnCalendar.clicked.connect(eventos.Eventos.abrirCalendar)
-        var.ui.btnAltaruta.clicked.connect(rutas.Rutas.altaRuta)
+        var.ui.btnAltaruta.clicked.connect(rutas.Rutas.cargaRuta)
 
 
         '''
@@ -93,6 +93,8 @@ class Main(QtWidgets.QMainWindow):
         var.ui.tabFurgo.setSelectionBehavior(QtWidgets.QTableWidget.SelectRows)
         var.ui.tabConductor.clicked.connect(eventos.Eventos.datosUnCon)
         var.ui.tabConductor.setSelectionBehavior(QtWidgets.QTableWidget.SelectRows)
+        var.ui.tabRutas.setSelectionBehavior(QtWidgets.QTableWidget.SelectRows)
+        var.ui.tabRutas.clicked.connect(rutas.Rutas.cargaUnaRuta)
         var.ui.tabFurgo.horizontalHeader().setSectionResizeMode(QtWidgets.QHeaderView.Stretch)
         var.ui.tabConductor.horizontalHeader().setSectionResizeMode(QtWidgets.QHeaderView.Stretch)
 
