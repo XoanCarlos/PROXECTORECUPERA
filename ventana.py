@@ -221,6 +221,7 @@ class Ui_MainWindow(object):
         font.setWeight(75)
         item.setFont(font)
         self.tabRutas.setHorizontalHeaderItem(6, item)
+        self.tabRutas.verticalHeader().setVisible(False)
         self.layoutWidget2 = QtWidgets.QWidget(self.rutas)
         self.layoutWidget2.setGeometry(QtCore.QRect(280, 40, 286, 52))
         self.layoutWidget2.setObjectName("layoutWidget2")

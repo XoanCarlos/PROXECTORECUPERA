@@ -248,8 +248,25 @@ class Conexion():
                     var.ui.tabRutas.setItem(index, 4, QtWidgets.QTableWidgetItem(str(kmt)))
                     var.ui.tabRutas.setItem(index, 5, QtWidgets.QTableWidgetItem(str(query.value(6))))
                     total = float(query.value(6)) * float(kmt)
-                    var.ui.tabRutas.setItem(index, 6, QtWidgets.QTableWidgetItem(str(total) + ' €'))
+                    var.ui.tabRutas.setItem(index, 6, QtWidgets.QTableWidgetItem(str(total)))
                     index = index + 1
         except Exception as error:
             print('Cargar rutas: %s: ' % str(error))
 
+
+    def bajaRuta(numruta):
+        try:
+            query = QtSql.QSqlQuery()
+            query.prepare('delete from rutas where codigo = :numruta')
+            query.bindValue(':numruta', int(numruta))
+            if query.exec_():
+                QtWidgets.QMessageBox.information(None, 'Ruta Eliminada',
+                                                      'Haga Click para Continuar')
+
+            else:
+                QtWidgets.QMessageBox.warning(None, query.lastError().text(),
+                                              'Haga Click para Continuar')
+
+
+        except Exception as error:
+            print('Baja ruta en conexion %s: ' % str(error))

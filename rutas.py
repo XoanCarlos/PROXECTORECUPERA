@@ -41,7 +41,26 @@ class Rutas():
 
     def cargaUnaRuta(self):
         try:
-            fila = var.ui.tabRutas.SelectedItems()
+            fila = var.ui.tabRutas.selectedItems()  #seleccionar la fila
+            if fila:
+                fila = [dato.text() for dato in fila]
+            var.ui.lblRuta.setText(str(fila[0]))
+            var.ui.txtFecha.setText(str(fila[1]))
+            var.ui.cmbMat.setCurrentText(str(fila[2]))
+            var.ui.cmbCon.setCurrentText(str(fila[3]))
+            var.ui.lblKmtotal.setText(str(fila[4]))
+            var.ui.lblPrecio.setText(str(fila[6]))
 
         except Exception as error:
             print('Cargar una ruta: %s: ' % str(error))
+
+    def bajaRuta(self):
+        try:
+            numruta = int(var.ui.lblRuta.text())
+            conexion.Conexion.bajaRuta(numruta)
+            conexion.Conexion.cargaRutas(self)
+
+
+        except Exception as error:
+            print('Error baja ruta en rutas %s: ' % str(error))
+

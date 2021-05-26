@@ -76,6 +76,7 @@ class Main(QtWidgets.QMainWindow):
         var.ui.btnReloadcon.clicked.connect(eventos.Eventos.limpiaCon)
         var.ui.btnCalendar.clicked.connect(eventos.Eventos.abrirCalendar)
         var.ui.btnAltaruta.clicked.connect(rutas.Rutas.cargaRuta)
+        var.ui.btnBajaruta.clicked.connect(rutas.Rutas.bajaRuta)
 
 
         '''
@@ -86,6 +87,8 @@ class Main(QtWidgets.QMainWindow):
         var.ui.txtDni.editingFinished.connect(eventos.Eventos.dniCapital)
         var.ui.txtNombre.editingFinished.connect(eventos.Eventos.nombreCapital)
         var.ui.txtKmf.editingFinished.connect(eventos.Eventos.calculaDistancia)
+
+
         '''
         eventos de las tablas
         '''
