@@ -1,4 +1,4 @@
-from PyQt5 import QtWidgets, QtSql
+from PyQt5 import QtWidgets, QtSql, QtCore
 from ventana import *
 from tarifas import *
 import var
@@ -247,8 +247,13 @@ class Conexion():
                     kmt = int(query.value(5)) - int(query.value(4))
                     var.ui.tabRutas.setItem(index, 4, QtWidgets.QTableWidgetItem(str(kmt)))
                     var.ui.tabRutas.setItem(index, 5, QtWidgets.QTableWidgetItem(str(query.value(6))))
+                    var.ui.tabRutas.item(index, 0).setTextAlignment(QtCore.Qt.AlignCenter)
+                    var.ui.tabRutas.item(index, 1).setTextAlignment(QtCore.Qt.AlignCenter)
+                    var.ui.tabRutas.item(index,4).setTextAlignment(QtCore.Qt.AlignCenter)
                     total = float(query.value(6)) * float(kmt)
                     var.ui.tabRutas.setItem(index, 6, QtWidgets.QTableWidgetItem(str(total)))
+                    var.ui.tabRutas.item(index, 5).setTextAlignment(QtCore.Qt.AlignRight)
+                    var.ui.tabRutas.item(index, 6).setTextAlignment(QtCore.Qt.AlignRight)
                     index = index + 1
         except Exception as error:
             print('Cargar rutas: %s: ' % str(error))

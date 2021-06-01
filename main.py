@@ -11,8 +11,9 @@
 from ventana import *
 from calendar import *
 from tarifas import *
+from informes import *
 from PyQt5 import QtWidgets, QtCore
-import sys, conexion, var, eventos, rutas
+import sys, conexion, var, eventos, rutas, informes
 from datetime import datetime, date
 import locale
 locale.setlocale(locale.LC_ALL, 'esp')
@@ -77,6 +78,7 @@ class Main(QtWidgets.QMainWindow):
         var.ui.btnCalendar.clicked.connect(eventos.Eventos.abrirCalendar)
         var.ui.btnAltaruta.clicked.connect(rutas.Rutas.cargaRuta)
         var.ui.btnBajaruta.clicked.connect(rutas.Rutas.bajaRuta)
+        var.ui.btnSalir.clicked.connect(eventos.Eventos.Salir)
 
 
         '''
@@ -112,6 +114,7 @@ class Main(QtWidgets.QMainWindow):
         '''
         var.ui.menuBarSalir.triggered.connect(eventos.Eventos.Salir)
         var.ui.menuBarTarifas.triggered.connect(rutas.Rutas.mostrarTarifas)
+        var.ui.reportRutas.triggered.connect(informes.Informes.informeRutas)
 
 
 # Press the green button in the gutter to run the script.

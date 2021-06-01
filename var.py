@@ -4,6 +4,9 @@ global ui
 global dlgcalendar
 global dlgtarifas
 
+global titulo
+global informe
+
 
 
 '''
